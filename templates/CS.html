@@ -1,0 +1,316 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/CS.css' %}">
+    <title>Shade Prediction</title><!--
+        <div class="background-image">
+        <p class="w3-sidebar">
+            <a href="{% url 'index' %}"><i class="fa fa-home" style="font-size:30px; color: #2e73ea;" ></i></a><br>
+            <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt" style="font-size:36px; color: #2e73ea;"></i></a>
+        </p>
+    </div>
+    -->
+    <style>
+        .background-image {
+            background-image: url("{% static 'media/Green.jpg' %}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100%;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1; 
+            opacity: 0.5;
+        }
+
+        #CS-Process{
+            top: 0;
+            margin: 0px 50px;
+            text-align: center; /* Center text horizontally */
+            color: #ffffff; /* Text color */
+            padding: 20px; /* Add padding as needed */
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background color */
+        
+        }
+        
+        table {
+            width: 90%; /* Make the table width 100% of its container */
+            border-collapse: collapse; /* Collapse table borders */
+            border: none; /* Add a border to the table */
+            margin: 0px;
+            margin-bottom: 30px; /* Add margin to separate tables if needed */
+            /* Other table styles */
+        }
+        
+        /* Style for table headers (th) */
+        th {
+            background-color: #ffffff; 
+            text-align: left; 
+            padding: 10px;
+            border: 1px solid black; 
+           
+        }
+        
+        td {
+            padding: 10px; /* Add padding to data cells */
+            border:  none; /* Add border to data cells */
+        }
+        /* Apply styles to the form container */
+        .formborder {
+            /*background-color: #2c2828;*/
+            opacity:1;
+            background-color: #ffffff;
+            border: 2px solid black;
+            opacity: 1;
+            padding: 10px;
+            margin: 50px;
+            border-radius: 2px;
+            box-sizing: border-box;
+        }
+        
+        /* Style form labels */
+        label {
+        display: block;
+        font-weight: bold;
+        color: black;
+        margin-bottom: 5px;
+        }
+        
+        input[type="checkbox"] {
+        margin-right: 5px;
+        }
+        
+        /* Style form inputs */
+        input[type="text"],input[type="number"], input[type="float"] ,input[type="file"]{
+        width: 100%;
+        padding: 5px;
+        margin-bottom: 10px;
+        border: 1px solid #000000;
+        border-radius: 5px;
+        }
+        
+        select{
+        width: 103%;
+        padding: 5px;
+        margin-bottom: 10px;
+        border: 1px solid black;
+        border-radius: 6px;
+        }
+        
+        
+        button{
+        margin-left: 100%;
+        width: 30%;
+        color: white;
+        padding: 14px 20px;
+        margin: 15px 500px;
+        font-size : 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+        background-color: #d1526b;
+        border:1px solid #e8dfe2;
+        }
+        
+        button:hover{
+            background-color: #8f0e40;
+        }
+        
+        .form-columns {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .form-column {
+            flex-basis: 45%; /* Adjust the width of the columns as needed */
+            padding: 10px;
+        
+        }
+
+        .w3-sidebar {
+            top:0;
+            width: 20px;
+            overflow: hidden;
+            transition: width 0.3s;
+        }
+    
+        /* Style for the links inside the sidebar */
+        .w3-sidebar a {
+            display: block;
+            padding: 2px;
+            text-align: center;
+        }
+    
+        /* Hover state for the sidebar */
+        .w3-sidebar:hover {
+            width: 50px; /* Adjust the width as needed */
+        }
+        
+</style>
+</head>
+<body>
+    <div class="background-image">
+        <p class="w3-sidebar">
+            <a href="{% url 'index' %}"><i class="fa fa-home" style="font-size:30px; color: #2e73ea;" ></i></a><br>
+            <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt" style="font-size:36px; color: #2e73ea;"></i></a>
+        </p> 
+    </div>
+    
+    <h1 id="CS-Process">Dye Quality Details</h1>
+    <!-- SHADE AND DYE PROCESS DETAILS
+       
+    {% if result %}
+       {{result}}</h1>
+    {% endif %}
+    -->
+    <!--
+    <input type="checkbox" id="checkboxLAb" onclick="toggleForm('formLAb')"> L, A, B Values
+    <input type="checkbox" id="checkboxImage" onclick="toggleForm('formImage')"> Upload Image
+    -->
+    <form action="cs_result" id="formCS" method="POST" enctype="multipart/form-data">
+        <div class="formborder"> 
+        {% csrf_token %} 
+        <div class="form-columns">
+            <div class="form-column"> 
+                <table id="LABTable">
+                    <tr>
+                        <td><label for="pH">POTENTIAL OF HYDROGEN [pH] </label></td>
+                        <td><input type="float" id="pH" name="pH" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="Temp">TEMPERATURE [°C] </label></td>
+                        <td><input type="number" id="Temp" name="Temp" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="thread_group">THREAD GROUP </label> </td>
+                        <td><select id="thread_group" name="thread_group">
+                            <option value="TRP">TRP</option>
+                            <option value="CFP-MEDIUM">CFP-MEDIUM</option>
+                            <option value="CFP-COR-A">CFP-COR-A</option>
+                            <option value="BRP_FINE">BRP_FINE</option>
+                            <option value="BRP_COARSE">BRP_COARSE</option>
+                            <option value="CFP-COR-D">CFP-COR-D</option>
+                            <option value="DURA_MICRO">DURA_MICRO</option>
+                            <option value="GRAL">GRAL</option>
+                            <option value="IBN_MEDIUM">IBN_MEDIUM</option>
+                            <option value="IBN_CORSER">IBN_CORSER</option>
+                            <option value="PPC-TJNM-F">PPC-TJNM-F</option>
+                            <option value="PPC ZHON FINE">PPC ZHON FINE</option>
+                            <option value="TXP_M_THAIMAN">TXP_M_THAIMAN</option>
+                            <option value="RPC_FINE">RPC_FINE</option>
+                            <option value="IBN FINE">IBN FINE</option>
+                            <option value="nan">nan</option>
+                            <option value="IBN MEDIUM">IBN MEDIUM</option>
+                            <option value="TXN_TAHILON">TXN_TAHILON</option>
+                            <option value="MFP">MFP</option>
+                            <option value="SSA FINE">SSA FINE</option>
+                            <option value="FENGSH-F">FENGSH-F</option>
+                            <option value="SSP_V_FINE">SSP_V_FINE</option>
+                            <option value="SSA COR-B">SSA COR-B</option>
+                            <option value="SSP-FENGSHU-VF">SSP-FENGSHU-VF</option>
+                            <option value="TXN_TAHILON_M">TXN_TAHILON_M</option>
+                            <option value="PBT">PBT</option>
+                            <option value="CFP_FINE_B">CFP_FINE_B</option>
+                            <option value="CFP_940X3_UNIFULL">CFP_940X3_UNIFULL</option>
+                            <option value="CFP_HYOSUNG_M">CFP_HYOSUNG_M</option>
+                            <option value="DURA MICRO FINE">DURA MICRO FINE</option>
+                            <option value="FENGSHU-C">FENGSHU-C</option>
+                            <option value="312X3_COARSE">312X3_COARSE</option>
+                            <option value="IBN COARSER">IBN COARSER</option>
+                            <option value="FENGSHU-F">FENGSHU-F</option>
+                            <option value="SSA_FS_FINE">SSA_FS_FINE</option>
+                            <option value="PPC-XPQ-F">PPC-XPQ-F</option>
+                            <option value="152X2_ZONG_MICRO">152X2_ZONG_MICRO</option>
+                            <option value="IBN-G3-HY">IBN-G3-HY</option>
+                            <option value="RPC_FINE_87X2">RPC_FINE_87X2</option>
+                            <option value="TXP FINE G">TXP FINE G</option>
+                            <option value="PPC_FENGSHU">PPC_FENGSHU</option>
+                            <option value="PPC 2053 T">PPC 2053 T</option>
+                            <option value="365X2_PPC_ZHONG">365X2_PPC_ZHONG</option>
+                            <option value="SSA COR-A">SSA COR-A</option>
+                            <option value="PPC_HYOSUNG">PPC_HYOSUNG</option>
+                            <option value="CFP_HYJ_FINE">CFP_HYJ_FINE</option>
+                          </select></td>
+                        </tr>
+                        <tr>
+                          <td><label for="Thread">THREAD TYPE </label></td>
+                          <td>
+                              <select id="Thread" name="Thread">
+                                  <option value="Single Fibre">Single Fibre</option>
+                                  <option value="Coarse">Coarse</option>
+                              </select>
+                          </td>
+                        </tr>
+                        <tr>
+                            <td><label for="Thickness : ">THICKNESS [mm] </label> </td>
+                            <td><input type="float" id="Thickness" name="Thickness" required></td><br>
+                          </tr>
+                        </table>
+                    </div>
+                    <div class="form-column">
+                        <table id="LABTable">
+                            <tr>
+                                <td><label for="Chemical">CHEMICAL </label></td>
+                                <td>
+                                    <select id="Chemical" name="Chemical">
+                                        <option value="Directly dyed without mordant">Directly dyed without mordant</option>
+                                        <option value="Post-Mordanting with copper sulphate">Post-Mordanting with copper sulphate</option>
+                                        <option value="Simultaneous Mordanting with Copper Sulphate">Simultaneous Mordanting with Copper Sulphate</option>
+                                    </select>
+                                </td>
+                            </tr>
+                
+                            <tr>
+                                <td><label for="Chemical_Conc">CHEMICAL CONCENTRATION [g/L]</label></td>
+                                <td><input type="float" id="Chemical_Conc" name="Chemical_Conc" required></td>
+                            </tr>
+                
+                            <tr>
+                              <td><label for="D_Duration">DURATION [mins] </label></td>
+                              <td><input type="number" id="D_Duration" name="D_Duration" required></td><br>
+                            </tr>
+                
+                            <tr>
+                                <td><label for="Fastness_Type">FASTNESS TYPE</label></td>
+                                <td>
+                                    <select id="Fastness_Type" name="Fastness_Type">
+                                        <option value="CORE DYED">CORE DYED</option>
+                                        <option value="HIGH LIGHT FAST">HIGH LIGHT FAST</option>
+                                        <option value="HIGH WASH FAST">HIGH WASH FAST</option>
+                                        <option value="MULTI-DYE">MULTI-DYE</option>
+                                        <option value="NON-PREMIUM">NON-PREMIUM</option>
+                                        <option value="NORMAL">NORMAL</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="Washings">WASHING </label></td>
+                                <td><input type="number" id="Washings" name="Washings" required></td>
+                            </tr>
+                            <tr>
+                                <td><label for="Lubricant">LUBRICANT</label></td>
+                                <td>
+                                    <select id="Lubricant" name="Lubricant">
+                                        <option value="L1">Anti Wick</option>
+                                        <option value="L2">Fire Retartant</option>
+                                        <option value="L3">Water Repellent</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <button type="submit" value="PREDICT">CHECK QUALITY</button>
+            </div>
+            </form>
+        </body>
+        </html>

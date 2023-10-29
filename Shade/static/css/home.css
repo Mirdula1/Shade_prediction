@@ -1,0 +1,103 @@
+/* src/components/Home.css 
+/* Style the button */
+
+button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #3518df; /* Adjust the color */
+    color: #fafafa;
+    border: 2px solid rgb(111, 149, 219);
+    cursor: pointer;
+    position: absolute;
+    bottom: 35%; 
+    left: 85%;
+    text-transform: uppercase;
+  }
+  
+button:hover {
+    background-color: #3518df; /* Adjust the hover color */
+  }
+
+
+/* Style the background image */
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  z-index: -1; /* Place it behind other content */
+}
+
+/* Style the container */
+div {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: 'url(${process.env.PUBLIC_URL}/images/pop-party-gradient-colorful-background.jpg)';
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+  z-index: -1;/* Optional: For a fixed background */
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Set the container to cover the entire viewport height */
+  overflow: hidden;
+}
+
+#video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; 
+  opacity: 0.3; /* Place the video behind other content */
+}
+
+.content {
+  position: relative;
+  z-index: 2; /* Place the content above the video */
+  text-align: center;
+  /*padding: 20px; */
+  color: #040404; /* Text color */
+   /* background: rgba(0, 0, 0, 0.5);  Background color with transparency */
+}
+
+.content h1 {
+  font-size: 45px;
+  position: absolute;
+  /*text-align: top; */
+  top : 20px;
+  left: 35%;
+  text-transform: uppercase;
+  
+  color: black;
+}
+
+.content strong {
+  position: justify;
+  top : 170px;
+  text-indent: 50px;
+  padding: 170px;
+  width: 60%;
+  height: 20%;
+  border: 0px solid rgb(0, 0, 0);
+  /*text-align: center; */
+  letter-spacing: 1px;
+  text-align: justify;
+  font-size: 30px;
+  color: rgb(0, 0, 0);
+}

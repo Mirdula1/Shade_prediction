@@ -1,0 +1,121 @@
+
+#Shade-result {
+    top: 0;
+    margin: 0;
+    text-align: center; /* Center text horizontally */
+    color: #fff; /* Text color */
+    padding: 20px; /* Add padding as needed */
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background color */
+    text-transform: uppercase;
+    margin-right: 50px;
+    margin-left: 50px;
+}
+
+.arrow {
+border: solid black;
+display: inline-block;
+border-width: 0 10px 10px 0;
+padding: 10px;
+text-decoration: none; 
+margin: 10px; 
+cursor: pointer;
+border-radius: 5px;
+position: absolute;
+font-size: 16px;
+}
+
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+    
+.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+    
+.result-container{ 
+    padding: 10px;
+    margin: 50px;
+    border-radius: 2px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    border: 1px solid black;
+    opacity: 1;
+}
+
+
+
+.image-container {
+    display: flex;
+    justify-content: space-evenly;
+    
+    /*
+    background-color: #ffffff;
+    border: 1px solid black;
+    opacity: 0.8;
+    */
+}
+
+.color-box {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    /*
+    background-color: #ffffff;
+    border: 1px solid black;
+    opacity: 0.8;*/
+    
+}
+
+
+#FB{
+    position: absolute;
+    right: 18%; 
+    bottom: 50px; 
+}
+
+#BB{
+    position: absolute;
+    left: 18%; 
+    bottom: 50px;
+}
+
+p.right-arrow 
+{
+    position: absolute;
+    right: 21%; 
+    bottom: 10px; 
+}
+
+p.left-arrow 
+{
+    position: absolute;
+    left: 17%; 
+    bottom: 10; 
+}
+a.right-arrow {
+    position: absolute;
+    right: 21%;
+    bottom: 10; 
+}
+
+a.left-arrow {
+    position: absolute;
+    left: 17%;
+    bottom: 10; 
+}
+
+#LAB{
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bolder;
+    padding:5px;
+}
+
+
+.material-icons{
+    font-size: 48px; 
+    font-weight: bolder;
+    color: black;
+}

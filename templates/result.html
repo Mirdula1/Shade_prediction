@@ -1,0 +1,160 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/result_lab.css' %}">
+    <title>Shade Prediction Result</title>
+    <style>
+        .background-image {
+            background-image: url("{% static 'media/Atlantis.jpg' %}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100%;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1; 
+           
+        }
+        html {
+            padding-top: 2px;
+            padding-right: 230px;
+            padding-bottom: 50px;
+            padding-left: 220px;
+        }
+
+        img{
+            border:1px solid black;
+            padding: 5px;
+            margin-left:20px;
+        }
+            
+        .w3-sidebar {
+            top:0;
+            width: 20px;
+            overflow: hidden;
+            transition: width 0.3s;
+        }
+    
+        /* Style for the links inside the sidebar */
+        .w3-sidebar a {
+            display: block;
+            padding: 2px;
+            text-align: center;
+        }
+    
+        /* Hover state for the sidebar */
+        .w3-sidebar:hover {
+            width: 50px; /* Adjust the width as needed */
+        }
+        #FB{
+            position: absolute;
+            right: 18%; 
+            bottom: 50px; 
+        }
+        
+        #BB{
+            position: absolute;
+            left: 18%; 
+            bottom: 50px;
+        }
+
+        #Shade-result {
+            top: 0;
+            margin: 0;
+            text-align: center; /* Center text horizontally */
+            color: #fff; /* Text color */
+            padding: 20px; /* Add padding as needed */
+            background-color: #3498db;
+            /*background-color: rgba(0, 0, 0, 0.7);  Semi-transparent background color */
+            text-transform: uppercase;
+            margin-right: 50px;
+            margin-left: 50px;
+        }
+        
+        .color-difference-heading {
+            font-size: 22px; 
+            margin: 15px 300px;
+            color: black; 
+            font-weight: bolder;
+            text-align:center;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <div class="background-image">
+        <p class="w3-sidebar">
+            <a href="{% url 'index' %}"><i class="fa fa-home" style="font-size:30px; color: #2e73ea;" ></i></a><br>
+            <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt" style="font-size:36px; color: #2e73ea;"></i></a>
+        </p>
+    </div>
+    <h1 id="Shade-result">Shade Prediction</h1>
+    {% if result %}
+    <div class="result-container">
+        {% if Li and Ai and Bi %}
+        <h1 class="color-difference-heading">Color Difference (Delta E): {{ delta_e|floatformat:2 }}</h1>
+        <div class="image-container">
+            <div class="color-box">
+                
+                <!--
+                   
+                   {% static 'images/color_images1.jpg' %} 
+                   <img src="{% static 'images/color_images1.jpg' %}" alt="Original Color"><br>
+                -->
+                <h2>Original Shade</h2>
+                <img src="{% static 'images/color_images1.jpg' %}" alt="Original Color"><br>
+                <h3>Extracted LAB Values from Uploaded Image,</h3>
+                <div>
+                    <p id="LAB">
+                        L: {{ Li|floatformat:2 }}<br>
+                    <br>A: {{ Ai|floatformat:2 }}<br>
+                    <br>B: {{ Bi|floatformat:2 }}</p>
+                </div>
+            </div>
+            <div class="color-box">
+                <h2>Predicted Shade</h2>
+                <img src="{% static 'images/color_images2.jpg' %}" alt="Predicted Color"><br>
+                <h3>LAB values for the Predicted Shade,</h3>
+                <!--<div>
+                    <p id="LAB"> L: {{ result.0.0 }}<br>
+                    <br>A: {{ result.0.1 }}<br>
+                    <br>B: {{ result.0.2 }}</p>
+                </div>
+            -->
+            <div>
+                    <p id="LAB"> L: {{ Lf|floatformat:2  }}<br>
+                    <br>A: {{ Af|floatformat:2  }}<br>
+                    <br>B: {{ Bf|floatformat:2  }}</p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    
+    {% else %}
+    <p>No result available.</p>
+    {% endif %}
+    
+    <!-- 
+        .size >= 0
+        <button id="BB">  Dye Process Refinemnet<br></button>
+        <button id="FB"> Dye Quality Check<br></button>
+        CS
+        logout
+    -->
+    <a id="BB" href="{% url 'predictor' %}"><i class="material-icons">arrow_back</i></a>
+    <a id="FB" href="{% url 'CS' %}"><i class="material-icons">arrow_forward</i></a>
+    
+   
+</body>    
+</html>

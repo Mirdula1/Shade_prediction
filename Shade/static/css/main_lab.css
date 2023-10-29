@@ -1,0 +1,168 @@
+      
+.center-container {
+  margin-top : 10px;
+  text-align: center;
+}
+
+.checkbox-container {
+    display: inline-block;
+    text-align: left;
+    margin: 10px;
+}
+
+input[type="checkbox"] {
+    margin-right: 5px;
+    vertical-align: middle;
+}  
+
+.arrow 
+{
+border: solid black;
+border-width: 0 10px 10px 0;
+display: inline-block;
+padding: 10px;
+}
+
+.right {
+transform: rotate(-45deg);
+-webkit-transform: rotate(-45deg);
+}
+
+.left {
+transform: rotate(135deg);
+-webkit-transform: rotate(135deg);
+}
+
+#LABTable{
+margin-top: -100px; 
+/*
+margin-left: 100px;*/
+margin-right: 100%;
+
+width: 70%;
+border-collapse: collapse; 
+/*font-size : 20%;
+margin: 30px; */
+background-color: #2c2828;
+border: 1px solid black;
+opacity: 0.6;
+}
+
+form.IMGTable
+{
+margin-top: 0px; 
+/*margin-left: 300px; 
+width: 70%;
+*/
+border-collapse: collapse;
+/*font-size : 20%;
+margin: 30px; */
+background-color: #2c2828;
+border: 1px solid black;
+opacity: 0.6;
+}
+
+label{
+font-weight: bold;
+text-align: left;
+font-size: 18px;
+}
+
+tr, td 
+{
+padding: 8px;
+text-align: left;
+          
+}
+
+th
+{
+background-color: #f2f2f2;
+}
+
+input[type="file"],input[type="number"], input[type="text"], input[type="float"] 
+{
+width: 66%;
+padding: 8px;
+border-radius: 4px;
+}
+
+input[type="checkbox"] {
+
+margin-right: 5px;
+vertical-align: middle;
+}
+
+select{
+width: 70%;
+padding: 8px;
+border-radius: 4px;
+}
+
+button{
+margin-left: 100%;
+width: 30%;
+background-color: #d1526b;
+color: white;
+padding: 14px 20px;
+margin: 15px 450px;
+font-size : 20px;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+border:1px solid #e8dfe2;
+font-weight: bold;
+}
+
+button:hover{
+background-color: #8f0e40;
+}
+
+input[type="submit"] { 
+width: 30%;
+background-color: #d1526b;
+color: white;
+padding: 14px 20px;
+margin: 8px 0;
+font-size : 18px;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+border:1px solid #e8dfe2;
+}
+
+input[type="submit"]:hover {
+background-color: #8f0e40;
+}
+
+div.formborder {
+  margin: 30px;
+  background-color: #2c2828;
+  border: 1px solid black;
+  opacity: 0.6;
+}
+
+#Shade-Process{
+ /* margin-top: 5px;
+  margin-right: 80%;
+  margin-bottom: 2px; 
+  padding: 2px;*/
+
+font-size: 50px; 
+text-align: center;
+font-weight: bold; 
+text-transform: uppercase; 
+}
+
+.table-section {
+  float: left;
+  width: 50%; /* Adjust the width as needed to split the table into two equal sections */
+}
+
+
+
+
+
+
+
+

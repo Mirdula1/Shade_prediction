@@ -1,0 +1,192 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <!--<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">-->
+    <style>
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #2e73ea; /* Adjust the color */
+            color: white;
+            border: 2px solid rgb(111, 149, 219);
+            cursor: pointer;
+            position: absolute;
+            bottom: 35%; 
+            left: 85%;
+            text-transform: uppercase;
+          }
+          
+        button:hover {
+            background-color: #3518df; /* Adjust the hover color */
+          }
+        
+        
+       
+        .background-image {
+          background-image: url("{% static 'media/Sustainable thread dyeing.jpg' %}");
+          background-repeat: no-repeat;
+          background-size: cover;
+          width: 100%;
+          height: 100vh;
+          position: fixed;
+          top: 0;
+          left: 0;
+          z-index: -1; 
+          opacity:0.5;
+          
+        }
+        
+        /* Style the container */
+        div {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        
+        .video-container {
+          position: relative;
+          width: 100%;
+          height: 100vh; /* Set the container to cover the entire viewport height */
+          overflow: hidden;
+        }
+        
+        #video-bg {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          z-index: -1; 
+          opacity: 0.3; /* Place the video behind other content */
+        }
+        
+        .content {
+          position: relative;
+          z-index: 2; 
+          text-align: center;
+          color: black;
+           /* #040404;  background: rgba(0, 0, 0, 0.5);  Background color with transparency */
+        }
+        
+        .content h1 {
+          font-size: 45px;
+          position: absolute;
+          /*text-align: top; */
+          top : 20px;
+          left: 15%;
+          padding: 10px;
+          text-transform: uppercase;
+          color: black;
+        }
+        
+        p{
+          position: justify;
+          /*top : 170px;*/
+          text-indent: 50px;
+          padding: 300px;
+          width: 60%;
+          height: 20%;
+          border: 0px solid rgb(0, 0, 0);
+          /*text-align: center; */
+          letter-spacing: 1px;
+          font-weight: bolder;
+          text-align: justify;
+          font-size: 20px;
+          color: black;
+          /* color : rgb(0, 0, 0); black;*/
+        }
+
+        .webcam-container {
+          
+          text-align: center; 
+          position: absolute; 
+          bottom: 65%;
+          left: 50%;
+          transform: translateX(-50%); 
+          padding: 10px; 
+          font-size:36px;
+      }
+      
+      .w3-sidebar{
+        top:0;
+        width: 20px;
+        overflow: hidden;
+        transition: width 0.3s;
+    }
+
+    .w3-sidebar a{
+        display: block;
+        padding: 0px;
+    }
+
+    .w3-sidebar:hover{
+        width: 50px; 
+    }
+    .topnav {
+      top: 0px;
+      margin-top: 0px;
+      margin: 0px, 0px;
+      overflow: hidden;
+      background-color: #333;
+    }
+    
+    .topnav a {
+      float: left;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+    
+    .topnav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+    
+    .topnav a.active {
+      background-color: #2e73ea;
+      color: white;
+    }
+    </style>
+</head>
+<body>
+    <!--<div class="video-container">-->
+      
+      <div class="background-image">
+        <p class="w3-sidebar">
+          <a href="{% url 'index' %}"><i class="fa fa-home" style="font-size:30px; color: #2e73ea;" ></i></a><br>
+          <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt" style="font-size:36px; color: #2e73ea;"></i></a>
+      </p>
+        
+    </div>
+
+   
+      <!--
+        <video autoplay muted loop id="video-bg">
+            <source src="{% static 'media/Color Wheel 1.912171063fa108dd430f.mp4' %}" type="video/mp4">
+        </video>
+      -->
+  
+        <div class="content">
+          <h1>Shade Prediction and Dye Quality Prediction</h1>
+            
+            <h2 class="webcam-container" >Welcome {{ user.username }}!!</h2>
+            <br><br>
+            <p div="Para">Welcome to our innovative online platform where you hold the power to predict the shade and quality of your dye with just a few clicks. Our user-friendly interface allows you to input your specific parameters, and in an instant, you'll receive accurate predictions for the resulting shade (L,A,B values). With our cutting-edge technology and predictive algorithms, you can confidently plan your textile projects and achieve the exact color and quality outcomes you envision. Join us on this journey of precision and convenience as we empower you to take control of your dyeing process like never before.</strong>
+            <form method="post" action="{% url 'predictor' %}">
+              {% csrf_token %}
+              <button class="button" type="submit" name="submit">Prediction</button>
+          </form>
+        </div>
+    <!--</div>-->
+</body>
+</html>

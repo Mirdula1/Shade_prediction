@@ -1,0 +1,167 @@
+
+.background-image {
+    background-image: url("{% static 'media/colour_.jpg' %}");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1; 
+   
+}
+html {
+    padding-top: 2px;
+    padding-right: 230px;
+    padding-bottom: 50px;
+    padding-left: 220px;
+}
+
+#CS-result{
+    margin-top: 0;
+    margin-right: 50px;
+    margin-left: 50px;
+    text-align: center; /* Center text horizontally */
+    color: #fff; /* Text color */
+    padding: 20px; /* Add padding as needed */
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background color */
+   
+}
+
+.arrow {
+border: solid black;
+display: inline-block;
+border-width: 0 10px 10px 0;
+padding: 10px;
+text-decoration: none; 
+margin: 10px; 
+cursor: pointer;
+border-radius: 5px;
+position: absolute;
+font-size: 16px;
+}
+
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+    
+.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+    
+
+
+.color-difference-heading {
+    font-size: 22px; 
+    margin: 15px 250px;
+    color: black; 
+    font-weight: bolder;
+}
+
+
+.image-container {
+    display: flex;
+    justify-content: space-evenly;
+    
+    /*
+    background-color: #ffffff;
+    border: 1px solid black;
+    opacity: 0.8;
+    */
+}
+
+.color-box {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    /*
+    background-color: #ffffff;
+    border: 1px solid black;
+    opacity: 0.8;*/
+    
+}
+
+i{
+    position: absolute;
+    right: 18%; 
+    bottom: 15px; 
+}
+
+#FB{
+    position: absolute;
+    right: 18%; 
+    bottom: 15px; 
+}
+
+#BB{
+    position: absolute;
+    left: 18%; 
+    bottom: 10px;
+}
+
+p.right-arrow 
+{
+    position: absolute;
+    right: 21%; 
+    bottom: 10px; 
+}
+
+p.left-arrow 
+{
+    position: absolute;
+    left: 17%; 
+    bottom: 10; 
+}
+a.right-arrow {
+    position: absolute;
+    right: 21%;
+    bottom: 10; 
+}
+
+a.left-arrow {
+    position: absolute;
+    left: 17%;
+    bottom: 10; 
+}
+
+#LAB{
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+
+.material-icons{
+    font-size: 48px; 
+    font-weight: bolder;
+    color: black;
+}
+
+
+button{
+    margin-left: 100%;
+    width: 30%;
+    padding: 14px 20px;
+    margin: 15px 250px;
+    font-size : 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: black;
+    background-color: #d1526b;
+    border:1px solid #e8dfe2;
+    font-weight: bold;
+    }
+    
+button:hover{
+    background-color: #8f0e40;
+    }
+
+
+img{
+    border:1px solid black;
+    }
+    
